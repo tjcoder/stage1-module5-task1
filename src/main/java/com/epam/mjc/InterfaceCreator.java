@@ -17,18 +17,8 @@ public class InterfaceCreator {
             boolean result = true;
 
             for (String s : list) {
-                if (s != null && !s.isEmpty()) {
-                    char ch = s.charAt(0);
-                    if (Character.isLetter(ch)) {
-                        if (Character.isLowerCase(ch)) {
-                            result = false;
-                            break;
-                        }
-                    } else {
-                        result = false;
-                        break;
-                    }
-                } else {
+                char ch = s.charAt(0);
+                if (!Character.isLetter(ch) || Character.isLowerCase(ch)) {
                     result = false;
                     break;
                 }
@@ -54,10 +44,6 @@ public class InterfaceCreator {
         return () -> {
             List<String> resultList = new ArrayList<>();
             for (String value : values) {
-                if (value == null || value.isBlank()) {
-                    continue;
-                }
-
                 String[] words = value.split(" ");
 
                 char firstChar = value.charAt(0);
